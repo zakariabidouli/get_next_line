@@ -1,11 +1,11 @@
 #include "get_next_line.h"
-#include <fcntl.h>
-int get_newline(char	c)
+
+int get_newline(char*	c)
 {
 	int i;
 
 	i = 0;
-	while (c != '\n')
+	while (c[i] != '\n' || c[i])
 		i++;
 	return (i);
 }
@@ -13,26 +13,28 @@ int get_newline(char	c)
 char *get_next_line(int fd)
 {
 	int it;
-	int i;
+	int end;
+	int start;
 	int len;
 	char *ptr;
+	char *p;
 	static size_t BUFFER_SIZE;
 
 	it = 0;
-	while (++it)
+	end = 0;
+	start = 0;
+	while (++ptr)
 	{
 		len = read (fd, ptr, BUFFER_SIZE);
-		ptr = malloc((sizeof(char)) * (len+ 1));
+		if (len != BUFFER_SIZE)
+			return (0); //error
+		ptr = malloc((sizeof(char)) * (len + 1));
 		if (!ptr)
 			return (NULL);
-		while (ptr[len])
-		{
-			i = get_newline(ptr[len]);
-			if (!i)
-				len--;
-			else
-				ptr[i + 1] = '\0'; 
-		}
+		if (get_newline(ptr))
+			end = get_newline(ptr);
+		// else
+		// 	ptr = ft_substr(ptr, 0, end); 
 	}
 	return (ptr);
 }
