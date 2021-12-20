@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-int get_newline(char*	c)
+int get_newline(char	*c)
 {
 	int i;
 
@@ -12,17 +12,19 @@ int get_newline(char*	c)
 
 char *get_next_line(int fd)
 {
-	int it;
-	int end;
-	int start;
-	int len;
-	char *ptr;
-	char *p;
-	static size_t BUFFER_SIZE;
+	size_t			len;
+	size_t			len_total;
+	char			*ptr;
+	char			*p;
+	static size_t	BUFFER_SIZE;
 
-	it = 0;
-	end = 0;
-	start = 0;
+	len_total = 0;
+	len_total = read (fd, p, sizeof (fd));
+	p = malloc ((sizeof(char)) * (len_total + 1));
+	if (!p)
+			return (NULL);
+	ptr = NULL;
+	len = 0;
 	while (++ptr)
 	{
 		len = read (fd, ptr, BUFFER_SIZE);
@@ -31,18 +33,19 @@ char *get_next_line(int fd)
 		ptr = malloc((sizeof(char)) * (len + 1));
 		if (!ptr)
 			return (NULL);
-		if (get_newline(ptr))
-			end = get_newline(ptr);
-		// else
-		// 	ptr = ft_substr(ptr, 0, end); 
+		if (len != (size_t) get_newline(ptr))
+		{	
+			ptr = ft_substr(ptr, 0, get_newline(ptr));
+			ptr[get_newline(ptr) + 1] = '\0';
+			break ;
+		}
 	}
+	ptr = ft_strjoin(p, ptr); 
 	return (ptr);
 }
 
-
 int main ()
 {
-	int x;
 	int fd = open ("txt.txt", O_RDONLY);
 	printf("%s",get_next_line(fd));
 }
