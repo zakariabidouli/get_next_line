@@ -15,8 +15,7 @@ char *get_next_line(int fd)
 	size_t			len;
 	size_t			len_total;
 	char			*ptr;
-	char			*p;
-	static size_t	BUFFER_SIZE;
+	static char			*p;
 
 	len_total = 0;
 	len_total = read (fd, p, sizeof (fd));
