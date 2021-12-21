@@ -40,7 +40,7 @@ char *get_next_line(int fd)
 			break ;
 		}
 	}
-	ptr = ft_strjoin(p, ptr); 
+	p = ft_strjoin(p, ptr); 
 	return (ptr);
 }
 
