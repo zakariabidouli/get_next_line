@@ -1,14 +1,5 @@
 #include "get_next_line.h"
 
-int get_newline(char	*c)
-{
-	int i;
-
-	i = 0;
-	while (c[i] != '\n' && c[i])
-		i++;
-	return (i);
-}
 
 char *get_next_line(int fd)
 {
@@ -17,23 +8,20 @@ char *get_next_line(int fd)
 	static char		*line;
 
 	line = ft_strdup("");
-	buffer = ft_strdup("");
-	if (!line)
-		return NULL;
-	while (get_newline(buffer))
+	while(1)
 	{
 		buffer = malloc(sizeof(char) * BUFFER_SIZE);
 		if (!buffer)
 			return NULL; 
 		len = read (fd, buffer, BUFFER_SIZE);
-		if (len <= (size_t) get_newline(buffer))
-		{	
-			buffer = ft_substr(buffer, 0, get_newline(buffer));
-			buffer[get_newline(buffer) + 1] = '\0';
+		buffer = ft_strchr(buffer, '\n');
+		if (buffer)
+		{
+			line = ft_strjoin(line, buffer);
+			line [ft_strlen(line) + 2] = '\0'; 
 		}
-		line = ft_strjoin(line, buffer);
-		line [ft_strlen(line) + 1] = '\n'; 
-		line [ft_strlen(line) + 2] = '\0'; 
+		else 
+			break;
 	}
 	return (line);
 }
