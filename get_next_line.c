@@ -1,28 +1,35 @@
 #include "get_next_line.h"
-
-
+char *line_buff()
+{
+	char *line;
+	line = ft_strdup("");
+		if ((size_t)ft_strlen(buffer) <= len)
+		{
+			line = ft_strjoin(line, buffer);
+			line [ft_strlen(line) + 1] = '\0'; 
+		}
+		else 
+			break;
+	}
+	return(line)
+}
 char *get_next_line(int fd)
 {
-	size_t			len;
-	char			*buffer;
-	static char		*line;
+	size_t		len;
+	size_t		line_len;
+	char		*buffer;
+	static char	**tmpline;
 
-	line = ft_strdup("");
+	*tmpline = buffer; 
 	while(1)
 	{
 		buffer = malloc(sizeof(char) * BUFFER_SIZE);
 		if (!buffer)
 			return NULL; 
 		len = read (fd, buffer, BUFFER_SIZE);
-		buffer = ft_strchr(buffer, '\n');
-		if (buffer)
-		{
-			line = ft_strjoin(line, buffer);
-			line [ft_strlen(line) + 2] = '\0'; 
-		}
-		else 
-			break;
+		buffer = ft_substr (buffer, 0, ft_strchr(buffer, '\n'));
 	}
+	line_len = 
 	return (line);
 }
 

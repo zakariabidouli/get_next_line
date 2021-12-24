@@ -14,6 +14,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strlen(const	char	*str);
 char	*ft_strdup(char	*src);
-char	*ft_strchr(const char *s, int c);
+size_t	ft_strchr(const char *s, char c);
 
 #endif
