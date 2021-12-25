@@ -15,5 +15,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strlen(const	char	*str);
 char	*ft_strdup(char	*src);
 size_t	ft_strchr(const char *s, char c);
+char *get_line(char	*buff, int	len);
 
 #endif
