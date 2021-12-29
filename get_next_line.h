@@ -7,14 +7,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-
-char 	*get_next_line(int fd);
-ssize_t read(int fd, void *buf, size_t count);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strlen(const	char	*str);
-char	*ft_strdup(char	*src);
-size_t	ft_strchr(const char *s, char c);
-char *get_line(char	*buff, int	len);
-
+size_t			ft_strlen(char *str);
+char			*ft_strchr(char *s, int c);
+char			*ft_strjoin(char *s1, char *s2);
+char			*get_next_line(int fd);
+char			*ft_get_line(char *save);
+char			*ft_save(char *save);
+char			*ft_read_and_save(int fd, char *save);
 #endif
