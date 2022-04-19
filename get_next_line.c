@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/07 12:46:53 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/02/07 12:51:51 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_get_line(char *save)
@@ -92,13 +104,3 @@ char	*get_next_line(int fd)
 	save = ft_save(save);
 	return (line);
 }
-
-// int main ()
-// {
-// 	int fd = open ("txt.txt", O_RDONLY);
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-
-// }

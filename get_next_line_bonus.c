@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/07 12:46:28 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/02/08 17:36:15 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 char	*ft_get_line(char *save)
@@ -92,11 +104,3 @@ char	*get_next_line(int fd)
 	save[fd] = ft_save(save[fd]);
 	return (line);
 }
-
-// #include<limits.h>
-// #include<stdio.h>
-// int main(int argc, char const *argv[])
-// {
-//     printf("%d",OPEN_MAX);
-//     return 0;
-// }
